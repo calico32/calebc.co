@@ -10,24 +10,24 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <>
-      <main className="max-xs:p-6 mx-auto max-w-screen-xl space-y-8 p-8">
-        <div className="relative flex min-h-svh flex-col items-center justify-center">
+      <main className="mx-auto max-w-screen-xl space-y-8 p-8 max-xs:p-6">
+        <div className="relative -mt-8 flex min-h-svh flex-col items-center justify-center">
           <Card
             align="center"
             isStatic
-            className="max-xs:px-6 max-xs:py-4 mb-32 flex !max-w-[calc(min(80vw,340px))] flex-col items-center sm:mb-20 sm:block sm:!max-w-[600px] md:mb-12 xl:mb-12"
+            className="mb-16 flex !max-w-[calc(min(80vw,340px))] flex-col items-center max-xs:px-6 max-xs:py-4 sm:block sm:!max-w-[600px]"
           >
             <Image
               src="https://avatars.githubusercontent.com/u/55799457"
               alt=""
-              className="max-xs:mb-4 float-right mb-8 ml-2 w-28 rounded-full border-2 border-zinc-600 sm:mb-0 sm:w-32"
+              className="float-right mb-8 ml-2 w-28 rounded-full border-2 border-zinc-600 max-xs:mb-4 sm:mb-0 sm:w-32"
               width={200}
               height={200}
             />
-            <h1 className="max-xs:mb-0 mb-2 w-full text-xs font-bold uppercase tracking-widest">
+            <h1 className="mb-2 w-full text-xs font-bold uppercase tracking-widest max-xs:mb-0">
               welcome
             </h1>
-            <p className="max-xs:mb-4 text-autoscale-lg max-xs:leading-6 mb-6 mt-2 sm:mb-2">
+            <p className="text-autoscale-lg mb-6 mt-2 max-xs:mb-4 max-xs:leading-6 sm:mb-2">
               Hi 👋! I'm Caleb, a full-stack developer, designer, and student. Thanks for stopping
               by!
             </p>
@@ -40,7 +40,7 @@ export default function Home() {
           </Card>
 
           <motion.div
-            className="absolute bottom-12 left-0 right-0 flex flex-col items-center justify-center gap-0 uppercase tracking-widest text-zinc-500"
+            className="absolute bottom-4 left-0 right-0 flex flex-col items-center justify-center gap-0 uppercase tracking-widest text-zinc-500"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{

@@ -60,7 +60,7 @@ registerPaint(
 
       // CSS Paint polyfill returns a "123px" string, native returns a { value: number }
       const screenHeightData = props.get('--screen-height')
-      const screenHeight = cleanPx(screenHeightData.value ?? screenHeightData)
+      const screenHeight = cleanPx(screenHeightData.value ?? screenHeightData) - 60
 
       const x = size.width / 2
       const y = screenHeight / 2
