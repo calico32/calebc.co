@@ -1,0 +1,878 @@
+{
+  "name": "Goose",
+  "scopeName": "source.goose",
+  "patterns": [
+    {
+      "include": "#source"
+    }
+  ],
+  "repository": {
+    "source": {
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#functions"
+        },
+        {
+          "include": "#variable-declarations"
+        },
+        {
+          "include": "#macro-calls"
+        },
+        {
+          "include": "#type-declarations"
+        },
+        {
+          "include": "#macro-declarations"
+        },
+        {
+          "include": "#struct-declarations"
+        },
+        {
+          "include": "#operator-overloads"
+        },
+        {
+          "include": "#generators"
+        },
+        {
+          "include": "#language-constants"
+        },
+        {
+          "include": "#keywords"
+        },
+        {
+          "include": "#function-call"
+        },
+        {
+          "include": "#symbols"
+        },
+        {
+          "include": "#numbers"
+        },
+        {
+          "include": "#function-arrows"
+        },
+        {
+          "include": "#operators"
+        },
+        {
+          "include": "#strings"
+        },
+        {
+          "include": "#directives"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.goose",
+          "begin": "\\/\\*",
+          "end": "\\*\\/",
+          "patterns": [
+            {
+              "include": "#comment-content"
+            }
+          ]
+        },
+        {
+          "name": "comment.line.triple-slash.goose",
+          "begin": "\\/\\/\\/",
+          "end": "$",
+          "patterns": [
+            {
+              "include": "#comment-content"
+            },
+            {
+              "include": "#doc-comment-content"
+            }
+          ]
+        },
+        {
+          "name": "comment.line.double-slash.goose",
+          "begin": "\\/\\/(?!\\/)",
+          "end": "$",
+          "patterns": [
+            {
+              "include": "#comment-content"
+            }
+          ]
+        }
+      ]
+    },
+    "comment-content": {
+      "patterns": [
+        {
+          "name": "variable.other.goose",
+          "begin": "`",
+          "end": "`",
+          "patterns": [
+            {
+              "include": "#source"
+            },
+            {
+              "match": "[A-Za-z$_][A-Za-z0-9$_]*",
+              "name": "source.goose"
+            }
+          ]
+        }
+      ]
+    },
+    "doc-comment-content": {
+      "patterns": [
+        {
+          "name": "constant.other.documentation.goose",
+          "match": "@(module|deprecated|param|returns)\\b",
+          "captures": {
+            "0": {
+              "name": "constant.other.documentation.goose"
+            }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.goose",
+          "match": "\\b(let|const|symbol|if|then|else|repeat|while|forever|times|for|in|do|break|continue|fn|end|return|memo|import|export|as|show|generator|yield|to|step|struct|init|this|super|interface|is|operator|try|catch|finally|throw|async|await|native|assert|match|when|macro|procmacro|frozen)\\b"
+        }
+      ]
+    },
+    "variable-declarations": {
+      "patterns": [
+        {
+          "name": "meta.let.expr.goose",
+          "match": "\\b(let)\\b\\s+([A-Za-z$_][A-Za-z0-9$_]*)(?:\\s*(:)\\s*(.+?))?\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.control.goose"
+            },
+            "2": {
+              "name": "variable.other.readwrite.goose"
+            },
+            "3": {
+              "name": "punctuation.separator.type.goose"
+            },
+            "4": {
+              "patterns": [
+                {
+                  "include": "#types"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "meta.const.expr.goose",
+          "match": "\\b(const)\\b\\s+([A-Za-z$_][A-Za-z0-9$_]*)(?:\\s*(:)\\s*(.+?))?\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.control.goose"
+            },
+            "2": {
+              "name": "variable.other.constant.goose"
+            },
+            "3": {
+              "name": "punctuation.separator.type.goose"
+            },
+            "4": {
+              "patterns": [
+                {
+                  "include": "#types"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "type-declarations": {
+      "patterns": [
+        {
+          "name": "meta.type.expr.goose",
+          "match": "\\b(type)\\b\\s+([A-Za-z$_][A-Za-z0-9$_]*)(?:\\s*(=)\\s*(.+?))?\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.control.goose"
+            },
+            "2": {
+              "name": "entity.name.type.goose"
+            },
+            "3": {
+              "name": "keyword.operator.assignment.goose"
+            },
+            "4": {
+              "patterns": [
+                {
+                  "include": "#types"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "meta.type.array.goose",
+          "match": "(.+?)\\[\\]",
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "include": "#types"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "constant.language.primitive.goose",
+          "match": "(bool|symbol|int|float|string|null|true|false|any)"
+        },
+        {
+          "name": "meta.type.generic.goose",
+          "begin": "([A-Za-z$_][A-Za-z0-9$_]*)\\s*(\\<)",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.type.goose"
+            },
+            "2": {
+              "name": "punctuation.definition.generic.begin.goose"
+            }
+          },
+          "end": "(\\>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.generic.end.goose"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#types"
+            }
+          ]
+        },
+        {
+          "name": "entity.name.type.goose",
+          "match": "\\b([A-Za-z$_][A-Za-z0-9$_]*)\\b"
+        },
+        {
+          "include": "#strings"
+        }
+      ]
+    },
+    "function-arrows": {
+      "patterns": [
+        {
+          "name": "storage.type.function.arrow.goose",
+          "match": "->"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.assignment.goose",
+          "match": "\\="
+        },
+        {
+          "name": "keyword.operator.assignment.arithmetic.goose",
+          "match": "\\+=|\\-=|\\*=|\\/=|\\%=|\\*\\*="
+        },
+        {
+          "name": "keyword.operator.assignment.logical.goose",
+          "match": "\\&&=|\\|\\|=|\\?\\?="
+        },
+        {
+          "name": "keyword.operator.bitwise.assignment.goose",
+          "match": "\\&=|\\|=|\\^=|<<=|>>="
+        },
+        {
+          "name": "keyword.operator.arithmetic.goose",
+          "match": "\\+|\\-|\\*|\\/|\\%|\\*\\*"
+        },
+        {
+          "name": "keyword.operator.logical.goose",
+          "match": "\\|\\||&&|!|\\?\\?"
+        },
+        {
+          "name": "keyword.operator.comparison.goose",
+          "match": "==|>|<|>=|<=|!="
+        },
+        {
+          "name": "keyword.operator.bitwise.goose",
+          "match": "\\&|\\||\\^|~|<<|>>"
+        },
+        {
+          "name": "keyword.operator.spread.goose",
+          "match": "\\.\\.\\."
+        },
+        {
+          "name": "keyword.operator.other.goose",
+          "match": "\\?|::"
+        }
+      ]
+    },
+    "struct-declarations": {
+      "begin": "\\b(struct)\\s+([A-Za-z$_][A-Za-z0-9$_]*)\\s*(?:<(.*?)>)?\\s*(\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.goose"
+        },
+        "2": {
+          "name": "entity.name.type.struct.goose"
+        },
+        "3": {
+          "patterns": [
+            {
+              "include": "#types"
+            }
+          ]
+        },
+        "4": {
+          "name": "punctuation.definition.parameters.begin.goose"
+        }
+      },
+      "end": "\\)",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.parameters.end.goose"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#function-params"
+        }
+      ]
+    },
+    "interface-declarations": {
+      "begin": "\\b(interface)\\s+([A-Za-z$_][A-Za-z0-9$_]*)",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.goose"
+        },
+        "2": {
+          "name": "entity.name.type.interface.goose"
+        }
+      },
+      "end": "end",
+      "endCaptures": {
+        "0": {
+          "name": "keyword.control.goose"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#functions"
+        }
+      ]
+    },
+    "operator-overloads": {
+      "begin": "\\b(operator)\\s+([A-Za-z$_][A-Za-z0-9$_]*)\\s*(?:<(.*?)>)?\\s+([^\\(]+)(\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.goose"
+        },
+        "2": {
+          "name": "entity.name.type.struct.goose"
+        },
+        "3": {
+          "patterns": [
+            {
+              "include": "#types"
+            }
+          ]
+        },
+        "4": {
+          "name": "keyword.operator.goose"
+        },
+        "5": {
+          "name": "punctuation.definition.parameters.begin.goose"
+        }
+      },
+      "end": "(\\))\\s*(?:(:)(.+))?",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.parameters.end.goose"
+        },
+        "2": {
+          "name": "punctuation.separator.type.goose"
+        },
+        "3": {
+          "patterns": [
+            {
+              "include": "#types"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "#function-params"
+        }
+      ]
+    },
+    "generators": {
+      "begin": "\\b(generator)\\s*(?:\\s+(?:([A-Za-z$_][A-Za-z0-9$_]*)\\.)?([A-Za-z$_][A-Za-z0-9$_]*))?\\s*(\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.goose"
+        },
+        "2": {
+          "name": "entity.name.type.struct.goose"
+        },
+        "3": {
+          "name": "entity.name.function.goose"
+        },
+        "4": {
+          "name": "punctuation.definition.parameters.goose"
+        }
+      },
+      "end": "(\\))",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.parameters.goose"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#function-params"
+        }
+      ]
+    },
+    "functions": {
+      "begin": "\\b(fn)\\s*(?:\\s+(?:([A-Za-z$_][A-Za-z0-9$_]*)(?:<(.*?)>)?\\.)?([A-Za-z$_][A-Za-z0-9$_]*))?\\s*(?:<(.*?)>)?\\s*(\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.goose"
+        },
+        "2": {
+          "name": "entity.name.type.struct.goose"
+        },
+        "3": {
+          "patterns": [
+            {
+              "include": "#types"
+            }
+          ]
+        },
+        "4": {
+          "name": "entity.name.function.goose"
+        },
+        "5": {
+          "patterns": [
+            {
+              "include": "#types"
+            }
+          ]
+        },
+        "6": {
+          "name": "punctuation.definition.parameters.goose"
+        }
+      },
+      "end": "(\\))(?:(:)(.+))?",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.parameters.goose"
+        },
+        "2": {
+          "name": "punctuation.separator.type.goose"
+        },
+        "3": {
+          "patterns": [
+            {
+              "include": "#types"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "#function-params"
+        }
+      ]
+    },
+    "macro-declarations": {
+      "begin": "\\b(procmacro|macro)\\s+([A-Za-z$_][A-Za-z0-9$_]*)(!)(\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.control.goose"
+        },
+        "2": {
+          "name": "entity.name.function.goose"
+        },
+        "3": {
+          "name": "keyword.operator.goose"
+        },
+        "4": {
+          "name": "punctuation.definition.parameters.goose"
+        }
+      },
+      "end": "(\\))(?:(:)(.+))?",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.parameters.goose"
+        },
+        "2": {
+          "name": "punctuation.separator.type.goose"
+        },
+        "3": {
+          "patterns": [
+            {
+              "include": "#types"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "#function-params"
+        }
+      ]
+    },
+    "function-params": {
+      "patterns": [
+        {
+          "begin": "(?=:?[A-Za-z$_])|(\\.\\.\\.)",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.operator.rest-parameters.goose"
+            }
+          },
+          "end": "(?=[,)])",
+          "patterns": [
+            {
+              "name": "meta.parameter.function.goose",
+              "match": "\\G(:?[A-Za-z$_][A-Za-z0-9$_]*)(?:\\s*(:)\\s*(.+?))?(?:\\s*(=)\\s*(.+))?(?=[,)])",
+              "captures": {
+                "1": {
+                  "name": "variable.parameter.function.goose"
+                },
+                "2": {
+                  "name": "punctuation.separator.type.goose"
+                },
+                "3": {
+                  "patterns": [
+                    {
+                      "include": "#types"
+                    }
+                  ]
+                },
+                "4": {
+                  "name": "keyword.operator.assignment.goose"
+                },
+                "5": {
+                  "patterns": [
+                    {
+                      "include": "#source"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "function-call": {
+      "begin": "(?<!\\w)(?:([a-z$_][A-Za-z0-9$_]*)|([A-Z][A-Za-z0-9$_]*))(?:<(.*?)>)?(\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "entity.name.function.goose"
+        },
+        "2": {
+          "name": "entity.name.type.struct.goose"
+        },
+        "3": {
+          "patterns": [
+            {
+              "include": "#types"
+            }
+          ]
+        },
+        "4": {
+          "name": "meta.brace.round.goose"
+        }
+      },
+      "end": "(\\))",
+      "endCaptures": {
+        "1": {
+          "name": "meta.brace.round.goose"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#source"
+        }
+      ]
+    },
+    "macro-calls": {
+      "patterns": [
+        {
+          "begin": "(?<!\\w)(html)(!)(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.function.goose"
+            },
+            "2": {
+              "name": "keyword.operator.goose"
+            },
+            "3": {
+              "name": "meta.brace.round.goose"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "meta.brace.round.goose"
+            }
+          },
+          "contentName": "meta.embedded.html.goose",
+          "patterns": [
+            {
+              "include": "source.js.jsx"
+            }
+          ]
+        },
+        {
+          "begin": "(?<!\\w)(sql)(!)(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.function.goose"
+            },
+            "2": {
+              "name": "keyword.operator.goose"
+            },
+            "3": {
+              "name": "meta.brace.round.goose"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "meta.brace.round.goose"
+            }
+          },
+          "contentName": "meta.embedded.sql.goose",
+          "patterns": [
+            {
+              "include": "source.sql"
+            }
+          ]
+        },
+        {
+          "begin": "(?<!\\w)([A-Za-z$_][A-Za-z0-9$_]*)(!)(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.function.goose"
+            },
+            "2": {
+              "name": "keyword.operator.goose"
+            },
+            "3": {
+              "name": "meta.brace.round.goose"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "meta.brace.round.goose"
+            }
+          },
+          "patterns": [
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      ]
+    },
+    "symbols": {
+      "patterns": [
+        {
+          "name": "constant.language.goose",
+          "match": "(@[A-Za-z$_][A-Za-z0-9$_]*)"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.goose",
+          "match": "(?<!\\w|\\$)0[xX][0-9A-Fa-f_]+\\b"
+        },
+        {
+          "name": "constant.numeric.binary.goose",
+          "match": "(?<!\\w|\\$)0[bB][01_]+\\b"
+        },
+        {
+          "name": "constant.numeric.octal.goose",
+          "match": "(?<!\\w|\\$)0[oO][0-7_]+\\b"
+        },
+        {
+          "name": "constant.numeric.goose",
+          "match": "(?x)(?<!\\w|\\$)[+-]?(?>((0|[1-9][0-9_]*)(\\.[0-9_]*)?|\\.[0-9_]+)([eE][+-]?[0-9_]+)?)(?!\\w)"
+        }
+      ]
+    },
+    "language-constants": {
+      "patterns": [
+        {
+          "name": "constant.language.goose",
+          "match": "\\b(true|false|null|_)\\b"
+        },
+        {
+          "name": "constant.language.primitive.goose",
+          "match": "\\b(string|int|float|bool)\\b"
+        }
+      ]
+    },
+    "string-interpolations": {
+      "patterns": [
+        {
+          "name": "string.interpolated.goose",
+          "match": "(\\$)([A-Za-z$_][A-Za-z0-9$_]*)",
+          "captures": {
+            "0": {
+              "name": "variable.parameter.goose"
+            },
+            "1": {
+              "name": "punctuation.definition.template-expression"
+            }
+          }
+        },
+        {
+          "name": "source.goose",
+          "contentName": "variable.other.goose",
+          "begin": "\\$\\{",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.template-expression.goose"
+            }
+          },
+          "end": "\\}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.template-expression"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#source"
+            },
+            {
+              "begin": "\\(",
+              "beginCaptures": {
+                "0": {
+                  "name": "meta.brace.round.goose"
+                }
+              },
+              "end": "\\)",
+              "endCaptures": {
+                "0": {
+                  "name": "meta.brace.round.goose"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "#source"
+                }
+              ]
+            },
+            {
+              "begin": "\\{",
+              "beginCaptures": {
+                "0": {
+                  "name": "meta.brace.curly.goose"
+                }
+              },
+              "end": "\\}",
+              "endCaptures": {
+                "0": {
+                  "name": "meta.brace.curly.goose"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "$self"
+                }
+              ]
+            },
+            {
+              "match": "[A-Za-z$_][A-Za-z0-9$_]*",
+              "name": "source.goose"
+            }
+          ]
+        }
+      ]
+    },
+    "string-escapes": {
+      "patterns": [
+        {
+          "name": "constant.character.escape.goose",
+          "match": "\\\\[^oxuU]"
+        },
+        {
+          "name": "constant.character.escape.goose",
+          "match": "\\\\o[0-7]{3}"
+        },
+        {
+          "name": "constant.character.escape.goose",
+          "match": "\\\\x[0-9A-Fa-f]{2}"
+        },
+        {
+          "name": "constant.character.escape.goose",
+          "match": "\\\\u[0-9A-Fa-f]{4}"
+        },
+        {
+          "name": "constant.character.escape.goose",
+          "match": "\\\\U[0-9A-Fa-f]{8}"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.goose",
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.goose"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.goose"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#string-interpolations"
+        },
+        {
+          "include": "#string-escapes"
+        }
+      ]
+    },
+    "directives": {
+      "patterns": [
+        {
+          "name": "meta.preprocessor.directive.goose",
+          "match": "^\\s*(#[A-Za-z$_][A-Za-z0-9$_]*)(\\s+.*)?\\s*$",
+          "captures": {
+            "1": {
+              "name": "keyword.control.directive.goose"
+            },
+            "2": {
+              "name": "string.directive.goose"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

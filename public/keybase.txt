@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/calico32
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://calebc.co
+  * I am calico32 (https://keybase.io/calico32) on keybase.
+  * I have a public key with fingerprint 6213 1C7D 79C1 94A1 97D9  F066 2B4A 3403 3799 3F2B
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01200afdd5e3b337e62ba8aa9525a2a8b6dc9027ddd07ecf649f038ac23f8ea159e10a",
+      "fingerprint": "62131c7d79c194a197d9f0662b4a340337993f2b",
+      "host": "keybase.io",
+      "key_id": "2b4a340337993f2b",
+      "kid": "0101d7f7c9ce3cb0653adbe4a0fd60e15cc60a368239530e511cb92792aafda4c9cc0a",
+      "uid": "4aaeec532fcc7789d9c7d06f310e8e19",
+      "username": "calico32"
+    },
+    "service": {
+      "hostname": "calebc.co",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1703822980,
+  "expire_in": 157680000,
+  "prev": "6594c9e0dc3780a9b72614341eb9c2326c3df9e0326e0416fd45027a90f649b5",
+  "seqno": 19,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMNvAnicbVJ7UFRVHF5ACBYBHWvMNB4XTIIN72PvvXvXRAmCUZIBc5QU2s4991y4
+LexddxcQFkxKRo3BYsJJGYaVx9oDR5oeZmU5PHUGrWQgIMCoQLJQY7IGaBg7l8np
+n+4/557f+b7vfN/vd7pD/HR6n/jtRj/+1JZ4n76OE0U6dDz1sJsQVamUMLsJK1pa
+UIGEnC6LVZEIM0FSNEkCWZJYxIgMwyOOFoEJAIGlWUADk8hJUCBpXpIkkkdQ5oyC
+TDImAGlGNiFAsQKiSEAYCFmx5SGH3aHYXFiWoymGgrzEC5ASjIASeAnzOCxuBIyR
+xBcJAiPTIibmq06Ngc2JwIkSFBXX8MayZO9/8A98k5TEyzwUIGKgSHIsAyQRGQEp
+SxyJKBZCjgQMZ6IZgWVIxFIUFAWaF2iA0wIj5sEl30VLckYAEIIsQ8sQ8rxJkARs
+nuRkhiKRCVGCBnQihw0UIoyGoECBKkMTFQYCV4sViLTGakn+QyARJkAtjN2hulSo
+FuByvstld5o1mqvUruFKkGj5V8EiKjYJNxEzipHDqag2wkxhJHQpmiTF47bTtGAi
+DQQ6YFccyKJoCJbnTCT+tHtQsdZ6VsDpEClBhjeRQBB5mqOMjJFCooCnRnOQkWR8
+jv8QaaQ4WTKyeMBAILXhiiyhZdpvU7G2gH2CPKzpVPJswFXkQERFZ0fOMp2PXhfg
+76u9Lp0+aMWDN3d8a9h9256DR3WRr7oveWobqyr1oZO7Z9KH5G12T2dTREBrrqu3
+q9WZMmP120Oey37+6b7EkpLHqhsqDZ3Rk5drN9atiaydD2fn13mPRb+2YSGme5TS
+j/z95NrcsJzQgWr2yujG0WPhT2Qsv8dKXTt8q2Iu92x1/bqhoipkpvGH1sSyL+7v
+DVm8s/ptz7Ls871jJwfb3HnKxzdfXtzZXr2ph/s8YKX1M8uQOhvMwM3rKyqzgjNT
+X8yj/rqd0fLR74uX3rxwJar+5khpYVzEgK0+qzz2m8lNbMbD5kPZBx4Ncq063TaQ
+du+TX8ot7s0tN3zGQqMP7pu49tzs6Ic5sVfXZ0wMj93aUvzQ2bLese/vvDScXOdO
+r5nwPzn7nlrh+cC3rTWppf23/BWjr4fdjriYyFMN7povvdNZpZXj4/6ZBT1lVzOd
+He+vvDu9L/bH64tJX0vnfo77qX+3bv/yfrWdjJpc8EZ2vpsw3rSm7nRfd3LcmYK5
+rmAmfSQwStdomjMbVg8GhZp3Wg/FzJxJNTy77iv9ru7AufapP8tTIucHBz3NyS3e
+xbpnml/J7aGi/9j+Bjo1ZOi/5vj0IlxI2uU9HFzv63f3bGDv0QuO5qdS/YeGpx7/
+rim+zdNSkLsjreqt8BCKOdKfdisyO/7b8yn67FjHO9aRG9sq1bWFfY9Mlbkj9r4Q
+0VBUcx2cmK5dpXjz/wEt0bgl
+=LxXD
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/calico32
+
+==================================================================

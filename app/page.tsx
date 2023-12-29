@@ -1,0 +1,213 @@
+'use client'
+
+import Card from '@/app/Card'
+import GooseCode from '@/app/GooseCode'
+import IconBar from '@/app/IconBar'
+import { motion } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
+import Image from 'next/image'
+
+export default function Home() {
+  return (
+    <>
+      <main className="max-xs:p-6 mx-auto max-w-screen-xl space-y-8 p-8">
+        <div className="relative flex min-h-svh flex-col items-center justify-center">
+          <Card
+            align="center"
+            isStatic
+            className="max-xs:px-6 max-xs:py-4 mb-32 flex !max-w-[calc(min(80vw,340px))] flex-col items-center sm:mb-20 sm:block sm:!max-w-[600px] md:mb-12 xl:mb-12"
+          >
+            <Image
+              src="https://avatars.githubusercontent.com/u/55799457"
+              alt=""
+              className="max-xs:mb-4 float-right mb-8 ml-2 w-28 rounded-full border-2 border-zinc-600 sm:mb-0 sm:w-32"
+              width={200}
+              height={200}
+            />
+            <h1 className="max-xs:mb-0 mb-2 w-full text-xs font-bold uppercase tracking-widest">
+              welcome
+            </h1>
+            <p className="max-xs:mb-4 text-autoscale-lg max-xs:leading-6 mb-6 mt-2 sm:mb-2">
+              Hi 👋! I'm Caleb, a full-stack developer, designer, and student. Thanks for stopping
+              by!
+            </p>
+            <IconBar
+              email="mailto:me@calebc.co"
+              github="https://github.com/calico32"
+              keybase="https://keybase.io/calico32"
+              linkedin="https://linkedin.com/in/caleb-chan-nj"
+            />
+          </Card>
+
+          <motion.div
+            className="absolute bottom-12 left-0 right-0 flex flex-col items-center justify-center gap-0 uppercase tracking-widest text-zinc-500"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{
+              margin: '-75% 0% 0% 0%',
+            }}
+          >
+            <span>Scroll for more</span>
+            <ChevronDown strokeWidth={1} size={36} className="scroll-animate" />
+          </motion.div>
+        </div>
+
+        <Card align="left" className="mt-8">
+          <h2 className="mb-2 text-xs font-bold uppercase tracking-widest">about me</h2>
+          <p className="text-autoscale mt-2">I'm a high school senior in northern NJ.</p>
+          <p className="text-autoscale mt-2">
+            I love to build anything and everything, from{' '}
+            <a href="https://github.com/calico32/hilltop" className="underline">
+              interactive websites
+            </a>{' '}
+            to{' '}
+            <a href="https://github.com/calico32/battleship" className="underline">
+              terminal games
+            </a>{' '}
+            and{' '}
+            <a href="https://github.com/gamer-gang/gamerbot" className="underline">
+              Discord bots
+            </a>
+            .
+          </p>
+          <p className="text-autoscale mt-2">
+            I'm currently working on a few projects, including{' '}
+            <a href="#goose" className="underline">
+              goose
+            </a>
+            , my own programming language;{' '}
+            <a href="#uctutors" className="underline">
+              UCTutors
+            </a>
+            , a tutor-matching service for my district; and{' '}
+            <a href="https://github.com/calico32" className="underline">
+              a few more
+            </a>
+            .
+          </p>
+        </Card>
+
+        <Card id="goose" align="right" className="mt-8 flex !max-w-none flex-col gap-8 lg:flex-row">
+          <GooseCode />
+          <div className="space-y-4">
+            <h2 className="text-xs font-bold uppercase tracking-widest">spotlight: goose</h2>
+            <p className="text-autoscale">
+              I created goose as a way to learn more about programming languages and compilers. The
+              language itself is dynamically typed and supports proeedural and level 1 OOP code, and
+              its design takes from many languages, including JavaScript, Lua, Dart, and Go. It can
+              be interpreted or compiled to machine code using LLVM. It's still a work in progress,
+              but you can check it out on{' '}
+              <a href="https://example.com" className="underline">
+                GitHub
+              </a>
+              .
+            </p>
+            <IconBar go />
+          </div>
+        </Card>
+
+        <Card id="uctutors" className="mt-8 flex flex-col gap-8 lg:flex-row">
+          <div className="space-y-4">
+            <h2 className="text-xs font-bold uppercase tracking-widest">spotlight: uctutors</h2>
+            <p className="text-autoscale">
+              UCTutors connects students with other students who can help them with their
+              schoolwork. The Android app uses modern Android technologies like Jetpack Compose and
+              Kotlin, and communicates securely and robustly with the TypeScript backend via gRPC.
+            </p>
+            <IconBar ts bun kotlin android gradle androidstudio googleplay material />
+          </div>
+        </Card>
+
+        <Card align="center" className="mt-8 !max-w-[60ch] space-y-2">
+          <h2 className="mb-2 text-xs font-bold uppercase tracking-widest">skills</h2>
+          <p className="text-autoscale">
+            I have experience with a variety of languages and frameworks. I'm most comfortable with
+            the Node.js ecosystem, but I'm also familiar with Go, Java/Kotlin, and Dart, among
+            others.
+          </p>
+          <h3 className="!mt-4 text-xs font-semibold uppercase tracking-widest text-zinc-400">
+            languages
+          </h3>
+          <IconBar html css ts js go csharp fsharp lua python dart kotlin rust java />
+          <h3 className="!mt-4 text-xs font-semibold uppercase tracking-widest text-zinc-400">
+            web technologies
+          </h3>
+          <IconBar node bun react solid next tailwind prisma headlessui />
+          <h3 className="!mt-4 text-xs font-semibold uppercase tracking-widest text-zinc-400">
+            editors &amp; tools
+          </h3>
+          <IconBar
+            vscode
+            intellij
+            rider
+            androidstudio
+            git
+            docker
+            npm
+            gradle
+            figma
+            inkscape
+            linux
+            arch
+            nginx
+            letsencrypt
+          />
+          <h3 className="!mt-4 text-xs font-semibold uppercase tracking-widest text-zinc-400">
+            platforms &amp; databases
+          </h3>
+          <IconBar github openai cloudflare vercel sentry postgres redis sqlite />
+        </Card>
+
+        <Card align="right" className="mt-8">
+          <h2 className="mb-2 text-xs font-bold uppercase tracking-widest">contact me</h2>
+          <p className="text-autoscale mt-2">
+            Feel free to shoot me an email at{' '}
+            <a href="mailto:me@calebc.co" className="underline">
+              me@calebc.co
+            </a>
+            . I'm also on{' '}
+            <a
+              href="https://github.com/calico32"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              GitHub
+            </a>
+            ,{' '}
+            <a
+              href="https://keybase.io/calico32"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              Keybase
+            </a>
+            , and{' '}
+            <a
+              href="https://linkedin.com/in/caleb-chan-nj"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              LinkedIn
+            </a>
+            .
+          </p>
+        </Card>
+      </main>
+      <footer className="!mb-8 !mt-32 flex items-center justify-center gap-2 text-zinc-600">
+        <span>©️ 2023 Caleb Chan</span>
+        <span>•</span>
+        <a
+          href="https://github.com/calico32/calebc.co"
+          className="underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          view source
+        </a>
+      </footer>
+    </>
+  )
+}

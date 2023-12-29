@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-autoscale {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+
+  .text-autoscale-lg {
+    @apply xs:text-xl text-lg sm:text-2xl;
+  }
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+body {
+  --screen-height: 100svh;
+  background: paint(gradient-grid);
+}
+
+.icon:hover {
+  color: var(--icon-color);
+}
+/*
+main {
+  visibility: hidden;
+} */
+
+.scroll-animate {
+  animation: scroll-animate 2s ease-in-out infinite;
+}
+
+/* bobbing animation */
+@keyframes scroll-animate {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+pre,
+code {
+  font-feature-settings: 'calt', 'liga', 'dlig', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06',
+    'ss07', 'ss08';
+}
