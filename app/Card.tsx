@@ -1,3 +1,5 @@
+'use client'
+
 import { CommonProps } from '@/app/types'
 import clsx from 'clsx'
 import { HTMLMotionProps, motion } from 'framer-motion'
@@ -25,7 +27,7 @@ export default function Card(props: CardProps) {
     <Element
       id={id}
       className={clsx(
-        'max-xs:p-6 w-fit transform rounded-lg border border-zinc-800 bg-zinc-900/70 px-8 py-6 shadow-lg backdrop-blur-sm md:max-w-[80%]',
+        'w-fit transform rounded-lg border border-zinc-800 bg-zinc-900/70 px-8 py-6 shadow-lg backdrop-blur-sm max-xs:p-6 md:max-w-[80%]',
         className,
         // align === 'left' && 'float-left',
         align === 'center' && 'mx-auto',

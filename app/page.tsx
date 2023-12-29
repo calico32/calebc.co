@@ -1,10 +1,7 @@
-'use client'
-
 import Card from '@/app/Card'
 import GooseCode from '@/app/GooseCode'
 import IconBar from '@/app/IconBar'
-import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import ScrollIndicator from '@/app/ScrollIndicator'
 import Image from 'next/image'
 
 export default function Home() {
@@ -39,17 +36,7 @@ export default function Home() {
             />
           </Card>
 
-          <motion.div
-            className="absolute bottom-4 left-0 right-0 flex flex-col items-center justify-center gap-0 uppercase tracking-widest text-zinc-500"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{
-              margin: '-75% 0% 0% 0%',
-            }}
-          >
-            <span>Scroll for more</span>
-            <ChevronDown strokeWidth={1} size={36} className="scroll-animate" />
-          </motion.div>
+          <ScrollIndicator />
         </div>
 
         <Card align="left" className="mt-8">
@@ -166,30 +153,15 @@ export default function Home() {
               me@calebc.co
             </a>
             . I'm also on{' '}
-            <a
-              href="https://github.com/calico32"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
+            <a href="https://github.com/calico32" className="underline">
               GitHub
             </a>
             ,{' '}
-            <a
-              href="https://keybase.io/calico32"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
+            <a href="https://keybase.io/calico32" className="underline">
               Keybase
             </a>
             , and{' '}
-            <a
-              href="https://linkedin.com/in/caleb-chan-nj"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
+            <a href="https://linkedin.com/in/caleb-chan-nj" className="underline">
               LinkedIn
             </a>
             .
@@ -199,12 +171,7 @@ export default function Home() {
       <footer className="!mb-8 !mt-32 flex items-center justify-center gap-2 text-zinc-600">
         <span>©️ 2023 Caleb Chan</span>
         <span>•</span>
-        <a
-          href="https://github.com/calico32/calebc.co"
-          className="underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://github.com/calico32/calebc.co" rel="noopener noreferrer">
           view source
         </a>
       </footer>

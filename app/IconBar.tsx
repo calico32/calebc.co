@@ -17,20 +17,21 @@ for (const key in icons) {
 }
 export default function IconBar(props: IconBarProps): JSX.Element {
   const enabledIcons = props.$all
-    ? Object.values(icons).map((icon) => [...icon, undefined] as const)
-    : Object.entries(props)
+    ? (Object.keys(icons).map((icon) => [icon, undefined] as const) as [
+        keyof typeof icons,
+        string | undefined,
+      ][])
+    : (Object.entries(props)
         .filter(([, enabled]) => enabled)
         .map(
-          ([key, enabledOrLink]) =>
-            [
-              ...icons[key as keyof typeof icons],
-              typeof enabledOrLink === 'string' ? enabledOrLink : undefined,
-            ] as const,
-        )
+          ([icon, enabledOrLink]) =>
+            [icon, typeof enabledOrLink === 'string' ? enabledOrLink : undefined] as const,
+        ) as [keyof typeof icons, string | undefined][])
+
   return (
     <div className="flex flex-wrap items-center gap-3 text-zinc-500 sm:gap-2">
-      {enabledIcons.map(([Icon, color, name, link], i) => (
-        <StyledIcon Icon={Icon} key={i} color={color} name={name} link={link} />
+      {enabledIcons.map(([icon, link], i) => (
+        <StyledIcon iconName={icon} link={link} key={i} />
       ))}
     </div>
   )

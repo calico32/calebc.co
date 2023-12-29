@@ -1,5 +1,6 @@
 'use client'
 
+import { icons } from '@/app/icons'
 import {
   autoUpdate,
   offset,
@@ -8,19 +9,17 @@ import {
   useInteractions,
   useTransitionStyles,
 } from '@floating-ui/react'
-import { IconType } from '@icons-pack/react-simple-icons'
 import clsx from 'clsx'
 import { ArrowUpRight } from 'lucide-react'
 import { CSSProperties, useState } from 'react'
 
 interface StyledIconProps {
-  Icon: IconType
-  color: string
-  name: string | undefined
+  iconName: keyof typeof icons
   link: string | undefined
 }
 
-export default function StyledIcon({ Icon, color, name, link }: StyledIconProps) {
+export default function StyledIcon({ iconName, link }: StyledIconProps) {
+  const [Icon, color, name] = icons[iconName]
   const [open, setOpen] = useState(false)
   const { context, floatingStyles, refs } = useFloating({
     open,
