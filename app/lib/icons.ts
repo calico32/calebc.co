@@ -1,4 +1,4 @@
-import SiJava from '@/app/SiJava'
+import SiJava from '@/app/components/SiJava'
 import * as Si from '@icons-pack/react-simple-icons'
 
 type IconTriple = [Icon: Si.IconType, color: string, name: string]

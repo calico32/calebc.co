@@ -1,7 +1,7 @@
-import Card from '@/app/Card'
-import GooseCode from '@/app/GooseCode'
-import IconBar from '@/app/IconBar'
-import ScrollIndicator from '@/app/ScrollIndicator'
+import Card from '@/app/components/Card'
+import GooseCode from '@/app/components/GooseCode'
+import IconBar from '@/app/components/IconBar'
+import ScrollIndicator from '@/app/components/ScrollIndicator'
 import Image from 'next/image'
 
 export default function Home() {

@@ -1,6 +1,6 @@
-import StyledIcon from '@/app/StyledIcon'
-import { contrastColors, convertSRGBtoHex, parseHexColor } from '@/app/color'
-import { icons } from './icons'
+import StyledIcon from '@/app/components/StyledIcon'
+import { contrastColors, convertSRGBtoHex, parseHexColor } from '@/app/lib/color'
+import { icons } from '../lib/icons'
 
 type IconBarProps = {
   -readonly [K in keyof typeof icons]?: boolean | string

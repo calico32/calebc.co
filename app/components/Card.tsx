@@ -1,6 +1,6 @@
 'use client'
 
-import { CommonProps } from '@/app/types'
+import { CommonProps } from '@/app/lib/types'
 import clsx from 'clsx'
 import { HTMLMotionProps, motion } from 'framer-motion'
 

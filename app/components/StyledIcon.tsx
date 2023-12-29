@@ -1,6 +1,6 @@
 'use client'
 
-import { icons } from '@/app/icons'
+import { icons } from '@/app/lib/icons'
 import {
   autoUpdate,
   offset,
