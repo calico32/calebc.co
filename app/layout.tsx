@@ -1,8 +1,10 @@
+import LazyMotion from '@/app/LazyMotion'
 import { Analytics } from '@vercel/analytics/react'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { Rethink_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
+import { Toaster } from 'sonner'
 import './globals.css'
 
 const rethinkSans = Rethink_Sans({
@@ -43,11 +45,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={clsx(
           rethinkSans.variable,
           monaspaceNeon.variable,
-          'bg-zinc-950 font-sans text-white',
+          'relative min-h-screen bg-zinc-950 font-sans text-white',
         )}
         suppressHydrationWarning
       >
-        {children}
+        <LazyMotion>{children}</LazyMotion>
+        <div className="h-32" />
+        <footer className="absolute bottom-0 left-0 right-0 !mb-8 flex items-center justify-center gap-2 text-zinc-600">
+          <span>©️ 2023 Caleb Chan</span>
+          <span>•</span>
+          <a href="https://github.com/calico32/calebc.co" className="underline">
+            view source
+          </a>
+        </footer>
+        <Toaster
+          theme="dark"
+          style={{
+            fontFamily: 'var(--sans)',
+          }}
+        />
         <script src="https://unpkg.com/css-paint-polyfill" />
         <script
           dangerouslySetInnerHTML={{

@@ -3,6 +3,7 @@ import GooseCode from '@/app/components/GooseCode'
 import IconBar from '@/app/components/IconBar'
 import ScrollIndicator from '@/app/components/ScrollIndicator'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -28,12 +29,21 @@ export default function Home() {
               Hi 👋! I'm Caleb, a full-stack developer, designer, and student. Thanks for stopping
               by!
             </p>
-            <IconBar
-              email="mailto:me@calebc.co"
-              github="https://github.com/calico32"
-              keybase="https://keybase.io/calico32"
-              linkedin="https://linkedin.com/in/caleb-chan-nj"
-            />
+            <div className="flex items-center gap-4 text-zinc-600">
+              <IconBar
+                email="mailto:me@calebc.co"
+                github="https://github.com/calico32"
+                keybase="https://keybase.io/calico32"
+                linkedin="https://linkedin.com/in/caleb-chan-nj"
+              />
+              <span className="ml-1">•</span>
+              <span>
+                sign the{' '}
+                <Link href="/guestbook" className="underline">
+                  guestbook
+                </Link>
+              </span>
+            </div>
           </Card>
 
           <ScrollIndicator />
@@ -166,15 +176,15 @@ export default function Home() {
             </a>
             .
           </p>
+          <p className="text-autoscale mt-2">
+            While you're here, you can also{' '}
+            <Link href="/guestbook" className="underline">
+              sign my guestbook
+            </Link>
+            !
+          </p>
         </Card>
       </main>
-      <footer className="!mb-8 !mt-32 flex items-center justify-center gap-2 text-zinc-600">
-        <span>©️ 2023 Caleb Chan</span>
-        <span>•</span>
-        <a href="https://github.com/calico32/calebc.co" rel="noopener noreferrer">
-          view source
-        </a>
-      </footer>
     </>
   )
 }

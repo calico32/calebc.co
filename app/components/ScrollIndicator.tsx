@@ -1,11 +1,11 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 
 export default function ScrollIndicator(): JSX.Element {
   return (
-    <motion.div
+    <m.div
       className="absolute bottom-4 left-0 right-0 flex flex-col items-center justify-center gap-0 uppercase tracking-widest text-zinc-500"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -15,6 +15,6 @@ export default function ScrollIndicator(): JSX.Element {
     >
       <span>Scroll for more</span>
       <ChevronDown strokeWidth={1} size={36} className="scroll-animate" />
-    </motion.div>
+    </m.div>
   )
 }

@@ -8,14 +8,26 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.4",
     "@icons-pack/react-simple-icons": "^9.2.0",
+    "@libsql/client": "^0.4.0-pre.5",
+    "@next/bundle-analyzer": "^14.0.5-canary.31",
+    "@prisma/adapter-libsql": "^5.7.1",
+    "@prisma/client": "^5.7.1",
     "@vercel/analytics": "^1.1.1",
     "clsx": "^2.0.0",
+    "date-fns": "^3.0.6",
     "framer-motion": "^10.16.16",
+    "kiyoi": "^0.3.1",
     "lucide-react": "^0.303.0",
-    "next": "14.0.5-canary.26",
+    "nanoid": "^5.0.4",
+    "next": "14.0.5-canary.31",
+    "prisma": "^5.7.1",
     "react": "^18",
     "react-dom": "^18",
-    "shiki": "^0.14.7"
+    "react-hook-form": "^7.49.2",
+    "sharp": "^0.33.1",
+    "shiki": "^0.14.7",
+    "sonner": "^1.3.1",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "@types/node": "^20",

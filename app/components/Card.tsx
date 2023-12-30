@@ -2,7 +2,7 @@
 
 import { CommonProps } from '@/app/lib/types'
 import clsx from 'clsx'
-import { HTMLMotionProps, motion } from 'framer-motion'
+import { HTMLMotionProps, m } from 'framer-motion'
 
 type CardProps = CommonProps & {
   align?: 'left' | 'center' | 'right'
@@ -13,7 +13,7 @@ type CardProps = CommonProps & {
 export default function Card(props: CardProps) {
   const { children, className, align, id, isStatic } = props
 
-  const Element = isStatic ? 'div' : motion.div
+  const Element = isStatic ? 'div' : m.div
 
   const motionProps: HTMLMotionProps<'div'> = isStatic
     ? {}
