@@ -75,9 +75,9 @@ export async function GET(req: NextRequest) {
   const userSession = Session.create({
     type: 'user',
     githubId: userData.id.toString(),
-    name: userData.name,
+    name: userData.name || userData.login,
     username: userData.login,
-    email: userData.email,
+    email: userData.email || userData.login + '@users.noreply.github.com',
     expires: Date.now() + 1000 * 60 * 60 * 24 * 30,
   } satisfies SessionData)
 
