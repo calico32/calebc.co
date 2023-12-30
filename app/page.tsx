@@ -29,7 +29,7 @@ export default function Home() {
               Hi 👋! I'm Caleb, a full-stack developer, designer, and student. Thanks for stopping
               by!
             </p>
-            <div className="flex items-center gap-4 text-zinc-600">
+            <div className="flex items-center gap-4 text-zinc-500">
               <IconBar
                 email="mailto:me@calebc.co"
                 github="https://github.com/calico32"
