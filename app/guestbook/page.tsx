@@ -15,7 +15,7 @@ export default async function Page(): Promise<JSX.Element> {
           <Link href="/">
             <ArrowLeft size={16} />
           </Link>
-          <h1 className="text-xs font-bold uppercase tracking-widest ">guestbook</h1>
+          <h1 className="text-xs font-bold uppercase tracking-widest">guestbook</h1>
         </div>
 
         <h2 className="text-autoscale mb-4 mt-4">Sign the guestbook</h2>

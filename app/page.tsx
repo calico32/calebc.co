@@ -29,15 +29,15 @@ export default function Home() {
               Hi 👋! I'm Caleb, a full-stack developer, designer, and student. Thanks for stopping
               by!
             </p>
-            <div className="flex items-center gap-4 text-zinc-500">
+            <div className="flex flex-col items-center gap-4 text-zinc-500 sm:flex-row">
               <IconBar
                 email="mailto:me@calebc.co"
                 github="https://github.com/calico32"
                 keybase="https://keybase.io/calico32"
                 linkedin="https://linkedin.com/in/caleb-chan-nj"
               />
-              <span className="ml-1">•</span>
-              <span>
+              <span className="ml-1 hidden sm:block">•</span>
+              <span className="text-autoscale">
                 sign the{' '}
                 <Link href="/guestbook" className="underline">
                   guestbook
