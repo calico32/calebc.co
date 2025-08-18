@@ -1,0 +1,133 @@
+@import 'tailwindcss' source(none);
+@source 'entry.ts';
+@source 'index.html';
+@source not inline('ease-out');
+
+/* @font-face {
+  font-family: 'Commit Mono';
+  src: url('../assets/CommitMono.woff2') format('woff2');
+  font-optical-sizing: auto;
+  font-feature-settings: 'ss01', 'ss02', 'ss03', 'ss04', 'ss05';
+  font-weight: 200 700;
+  font-display: swap;
+} */
+
+@theme {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-mono: 'Commit Mono', monospace;
+  --breakpoint-xs: 450px;
+}
+
+html {
+  @apply min-h-full;
+}
+
+body {
+  @apply min-h-full overflow-hidden font-sans text-zinc-100;
+  --content-width: 1024px;
+  display: grid;
+  background-color: oklch(33.521% 0.01048 285.776);
+  grid-template-columns: 1fr min(var(--content-width), 100%) 1fr;
+}
+
+/* @media (min-width: 1024px) {
+  body {
+    --content-width: 60rem;
+  }
+} */
+
+iconify-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+.content {
+  @apply col-span-1 col-start-2;
+  @apply px-4 mt-4 mb-8 md:mt-16 md:mx-auto;
+  @apply flex flex-col lg:items-center md:flex-row;
+  @apply gap-2 md:gap-12;
+
+  .heading {
+    @apply shrink-0;
+    @apply flex flex-col xs:flex-row md:flex-col;
+    @apply items-start xs:items-center md:items-start;
+    @apply gap-2 xs:gap-4 md:gap-1;
+  }
+
+  .title {
+    @apply text-3xl font-bold md:text-5xl;
+    @apply h-max shrink-0;
+  }
+
+  .links {
+    @apply flex gap-3 md:gap-1;
+    @apply -ml-1.5 xs:ml-0 md:-ml-3;
+    @apply text-3xl md:text-4xl;
+  }
+
+  .link {
+    @apply flex items-center justify-center;
+    @apply p-1 rounded-md size-10 md:size-14;
+    @apply hover:bg-zinc-500/40;
+  }
+
+  .body {
+    @apply text-lg md:text-2xl;
+  }
+}
+
+.cards {
+  @apply absolute;
+}
+
+.card {
+  @apply fixed flex flex-col;
+  @apply md:size-70 size-45;
+  @apply p-3 border-2 rounded-lg md:p-6;
+  @apply border-zinc-300;
+  @apply select-none touch-none hover:z-50 cursor-grab;
+  @apply transition-colors hover:transition-none;
+
+  &:hover {
+    .link,
+    .icons {
+      @apply text-zinc-100;
+    }
+  }
+
+  .title {
+    @apply mb-1 text-sm font-semibold md:text-xl;
+  }
+
+  .link {
+    @apply flex items-center gap-1;
+    @apply mb-2 w-max;
+    @apply text-xs font-medium text-zinc-300 md:text-lg;
+    @apply hover:underline;
+  }
+
+  .icons {
+    @apply flex flex-wrap items-start flex-1 gap-2;
+    @apply text-sm md:text-2xl text-zinc-300;
+  }
+
+  .date {
+    @apply text-xs md:text-sm;
+  }
+
+  .move-icon {
+    @apply md:hidden;
+    @apply absolute bottom-3 right-3;
+    @apply text-zinc-400;
+  }
+}
+
+.footer {
+  @apply absolute -translate-x-1/2 bottom-2 left-1/2;
+  @apply text-sm text-center text-neutral-400;
+  @apply w-max;
+  a {
+    @apply hover:underline;
+  }
+}
