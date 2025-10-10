@@ -42,6 +42,11 @@ const links: Link[] = [
     url: 'mailto:cchan@hey.com',
     alt: 'Email',
   },
+  {
+    icon: 'carbon:blog',
+    url: 'https://blog.calebc.co',
+    alt: 'Blog',
+  },
   // {
   //   icon: 'carbon:document',
   //   url: '/resume.pdf',
