@@ -1,5 +1,5 @@
 ---
-title: An AI-enhanced cloud content management system for Hanover Insurance
+title: AI-enhanced cloud content and knowledge management for Hanover Insurance
 name: hanover-ibank
 date: "2026"
 icons:

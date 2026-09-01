@@ -19,10 +19,10 @@ window manager. It is (regrettably) written in Go via C FFI to interface with
 Waybar and GTK, and uses niri's IPC mechanisms to get information about the
 windows on the current workspace.
 
-The original project was a text-based indicator that didn't require CGo; a
+The original project was a text-based indicator that didn't require cgo; a
 version 2 was later written to allow for a more graphical representation and
-mouse interaction with the minimap. This move to CGo turned subsecond compile
-times into 15+ minute cold builds, which has convinced me to never use CGo in
+mouse interaction with the minimap. This move to cgo turned subsecond compile
+times into 15+ minute cold builds, which has convinced me to never use cgo in
 new projects again, but it's still a fun project to work on nonetheless (if I
 have time to spare sitting around).
 
