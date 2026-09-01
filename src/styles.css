@@ -1,3 +1,5 @@
+@import "@fontsource-variable/dm-sans/opsz.css";
+@import "@fontsource-variable/dm-sans/opsz-italic.css";
 @import "tailwindcss" source(none);
 @source "entry.ts";
 @source "index.html";
@@ -14,7 +16,7 @@
 } */
 
 @theme {
-	--font-sans: "DM Sans", sans-serif;
+	--font-sans: "DM Sans Variable", sans-serif;
 	--font-mono: "Commit Mono", monospace;
 	--breakpoint-xs: 450px;
 }
