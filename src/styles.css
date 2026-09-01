@@ -87,7 +87,7 @@ iconify-icon {
 	@apply size-45 md:size-70;
 	@apply rounded-lg border-2 p-3 md:p-6;
 	@apply border-zinc-300;
-	@apply cursor-grab touch-none select-none hover:z-50;
+	@apply cursor-grab touch-none select-none hover:z-999;
 	@apply transition-colors hover:transition-none;
 
 	&:hover {
