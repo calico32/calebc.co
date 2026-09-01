@@ -179,3 +179,5 @@ dist
 # Custom
 
 *.pem
+assets/keybase.txt
+wrangler.toml

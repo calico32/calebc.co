@@ -1,4 +1,4 @@
-import 'iconify-icon'
+import "iconify-icon"
 // import { registerSW } from 'virtual:pwa-register'
 
 // let alpineReady = new Promise<void>((resolve) => {

@@ -8,7 +8,7 @@
     "jsx": "react-jsx",
     "allowJs": true,
 
-    "types": ["vite-plugin-pwa/vanillajs"],
+    "types": ["vite/client", "vite-plugin-pwa/vanillajs"],
 
     // Bundler mode
     "moduleResolution": "bundler",

@@ -23,6 +23,8 @@ export class DraggableState {
 	requestedRotation: number | null = null
 	/** Whether the element is currently being dragged */
 	active = false
+	/** Distance dragged since pointer down, pixels; used to suppress clicks after a drag */
+	dragDistance = 0
 	/** DOM element being dragged */
 	readonly el: HTMLElement
 	/** Simulation instance */
@@ -124,6 +126,7 @@ export class DraggableState {
 		}
 		if (ev.button !== 0) return
 		ev.preventDefault()
+		this.dragDistance = 0
 		this.mouseStart = new DOMPoint(ev.clientX, ev.clientY)
 		const pos = extractTransformCoordinates(this.el)
 		if (!pos) {
@@ -144,6 +147,7 @@ export class DraggableState {
 		let lastRequested = this.requestedPosition
 		const dx = ev.clientX - this.mouseStart.x
 		const dy = ev.clientY - this.mouseStart.y
+		this.dragDistance = Math.hypot(dx, dy)
 		this.requestedPosition = new DOMPoint(this.start.x + dx, this.start.y + dy)
 		if (this.t == 0) {
 			this.t = performance.now()
@@ -169,6 +173,7 @@ export class DraggableState {
 
 	onTouchStart(ev: TouchEvent) {
 		// we don't consider touch starts as active because it could just be a click
+		this.dragDistance = 0
 		this.el.classList.add("active")
 		document.addEventListener("touchmove", this.onTouchMove)
 		document.addEventListener("touchend", this.onTouchEnd)

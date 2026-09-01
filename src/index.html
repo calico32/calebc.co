@@ -1,60 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <title>calebc.co</title>
+	<head>
+		<title>calebc.co</title>
 
-    {{>head}}
-  </head>
-  <body x-data="main">
-    <main class="content">
-      <div class="heading">
-        <h1 class="title">Caleb Chan</h1>
-        <div class="links">
-          <template x-for="(link, index) in links" :key="index">
-            <a :href="link.url" :title="link.alt" class="link">
-              <iconify-icon :icon="link.icon"></iconify-icon>
-            </a>
-          </template>
-        </div>
-      </div>
-      <p class="body">
-        Full-stack developer and undergrad at WPI. Enjoys building tools to make
-        developers' lives easier. Seeks the beauty of simplicity and elegance in
-        software.
-      </p>
-    </main>
-    <div class="cards">
-      <template x-for="(card, index) in cards" :key="index">
-        <div
-          x-data="draggable(index)"
-          class="card bg-zinc-700"
-          :class="card.class"
-        >
-          <h2 x-text="card.title" class="title"></h2>
-          <a
-            class="link"
-            target="_blank"
-            rel="noopener noreferrer"
-            :href="card.url"
-          >
-            <span x-text="card.name"></span>
-            <iconify-icon icon="stash:new-window-page"></iconify-icon>
-          </a>
-          <p class="icons">
-            <template x-for="(icon, index) in card.icons" :key="index">
-              <iconify-icon :icon="icon"></iconify-icon>
-            </template>
-          </p>
-          <p class="date">
-            <span x-text="card.date"></span>
-          </p>
-          <iconify-icon icon="carbon:move" class="move-icon"></iconify-icon>
-        </div>
-      </template>
-    </div>
+		{{>head}}
+	</head>
+	<body x-data="main">
+		<main class="content">
+			<div class="heading">
+				<h1 class="title">Caleb Chan</h1>
+				<div class="links">
+					<template x-for="(link, index) in links" :key="index">
+						<a :href="link.url" :title="link.alt" class="link">
+							<iconify-icon :icon="link.icon"></iconify-icon>
+						</a>
+					</template>
+				</div>
+			</div>
+			<p class="body">
+				Full-stack developer and undergrad at WPI. Enjoys building tools to make developers'
+				lives easier. Seeks the beauty and elegance of simplicity in software.
+			</p>
+		</main>
+		<div class="cards">
+			<template x-for="(card, index) in cards" :key="index">
+				<div x-data="draggable(index)" class="card bg-zinc-700" :class="card.class">
+					<h2 x-text="card.title" class="title"></h2>
+					<p x-text="card.name" class="name"></p>
+					<p class="icons">
+						<template x-for="(icon, index) in card.icons" :key="index">
+							<iconify-icon :icon="icon" mode="mask"></iconify-icon>
+						</template>
+					</p>
+					<p class="date">
+						<span x-text="card.date"></span>
+					</p>
+					<a
+						class="open"
+						aria-label="Open"
+						:href="'/' + card.id"
+						@click.prevent="state.dragDistance < 5 && openOverlay(card)"
+					>
+						<iconify-icon icon="carbon:zoom-in"></iconify-icon>
+					</a>
+				</div>
+			</template>
+		</div>
 
-    {{>footer}}
+		<div class="overlay" :class="overlayOpen && 'open'" @click.self="closeOverlay()">
+			<div class="big-card bg-zinc-700" :class="overlayCard?.accent" :style="overlayTilt">
+				<button class="close" aria-label="Close" @click="closeOverlay()">
+					<iconify-icon icon="carbon:close"></iconify-icon>
+				</button>
+				<h2 x-text="overlayCard?.name" class="title"></h2>
+				<p x-text="overlayCard?.title" class="subtitle"></p>
+				<a
+					x-show="overlayCard?.url"
+					class="link"
+					target="_blank"
+					rel="noopener noreferrer"
+					:href="overlayCard?.url"
+				>
+					<span x-text="overlayCard?.url?.replace(/^https?:\/\//, '')"></span>
+					<iconify-icon icon="stash:new-window-page"></iconify-icon>
+				</a>
+				<p class="icons">
+					<template x-for="(icon, index) in overlayCard?.icons" :key="index">
+						<iconify-icon :icon="icon" mode="mask"></iconify-icon>
+					</template>
+					<span x-text="overlayCard?.date" class="date"></span>
+				</p>
+				<div class="copy" x-html="overlayCard?.html"></div>
+			</div>
+		</div>
 
-    <script type="module" src="./entry.ts"></script>
-  </body>
+		{{>footer}}
+
+		<script type="module" src="./entry.ts"></script>
+	</body>
 </html>
